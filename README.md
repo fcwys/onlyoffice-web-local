@@ -2,7 +2,7 @@
 
 基于only-office的纯本地项目，支持本地`打开、编辑`office文档
 
-[live-demo🪄](https://sweetwisdom.github.io/onlyoffice-web-local/)
+[live-demo🪄](https://fcwys.github.io/onlyoffice-web-local/)
 
 
 
@@ -21,7 +21,7 @@
 * `filename`（可选）：文件名，如果未提供将尝试自动解析
 
 示例：
-[00.xlsx](https://sweetwisdom.github.io/onlyoffice-web-local/#/?url=https://sweetwisdom.github.io/react-filePreview/filePreview/00.xlsx)
+[00.xlsx](https://fcwys.github.io/onlyoffice-web-local/#/?url=https://fcwys.github.io/react-filePreview/filePreview/00.xlsx)
 
 ```
 ?filename=00.pptx&url=https://example.com/files/00.pptx
