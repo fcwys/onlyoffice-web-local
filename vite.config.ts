@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
         host: '0.0.0.0',
       },
       build: {
-        outDir: 'html',
+        outDir: 'dist',
       },
       plugins: [
         AutoImport({

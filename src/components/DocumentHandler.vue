@@ -48,6 +48,7 @@ onMounted(async () => {
                 } catch (error) {
                     console.error('Error opening file:', error)
                     alert('文件打开失败，请检查文件格式')
+                    window.location.href = './';
                 }
             },
             { immediate: true }, // 立即执行一次以处理初始值
@@ -95,7 +96,7 @@ async function handleDocumentOperation(options: { isNew: boolean; fileName: stri
         })
     } catch (error: any) {
         console.error('文档操作失败:', error)
-        alert(`文档操作失败: ${error.message}`)
+        // alert(`文档操作失败: ${error.message}`)
         throw error
     }
 }
