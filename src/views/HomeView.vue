@@ -128,9 +128,8 @@ const onOpenDocument = async () => {
 
 //返回首页按钮事件
 const goHome = () => {
-  // 这里可以实现返回首页的逻辑
-  // 比如跳转到首页路由
-  window.location.href = './'
+  //刷新页面
+  window.location.reload();
 } 
 // 页面初始化后根据路由地址获取文件 并自动打开
 async function initFileUrl() {

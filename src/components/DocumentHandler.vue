@@ -48,7 +48,7 @@ onMounted(async () => {
                 } catch (error) {
                     console.error('Error opening file:', error)
                     alert('文件打开失败，请检查文件格式')
-                    window.location.href = './';
+                    window.location.reload();
                 }
             },
             { immediate: true }, // 立即执行一次以处理初始值
