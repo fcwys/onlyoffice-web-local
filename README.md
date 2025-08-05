@@ -1,6 +1,6 @@
 # office-web-local
 
-基于only-office的纯本地项目，支持本地`打开、编辑`office文档
+基于only-office的纯本地项目，支持本地`打开、编辑`office文档，修改自https://github.com/sweetwisdom/onlyoffice-web-local
 
 [live-demo🪄](https://fcwys.github.io/onlyoffice-web-local/)
 
