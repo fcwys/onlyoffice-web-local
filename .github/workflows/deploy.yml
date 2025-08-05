@@ -1,0 +1,65 @@
+name: 部署 Vite 项目到 GitHub Pages 并发布 Release 附件
+
+on:
+  push:
+    branches:
+      - main  # 当 main 分支有 push 时触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # 使用最新版本的 Ubuntu 作为运行环境
+    steps:
+      # 第一步：检出仓库代码
+      - name: 拉取代码
+        uses: actions/checkout@v3
+
+      # 第二步：设置 Node.js 环境
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20  # 指定 Node.js 版本
+
+      # 第三步：安装 pnpm（版本 10）
+      - name: 设置 pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+          run_install: false  # 不自动安装依赖，下一步手动执行
+
+      # 第四步：安装依赖
+      - name: 安装依赖
+        run: pnpm install
+
+      # 第五步：构建项目
+      - name: 构建项目
+        run: pnpm run build
+
+      # 第六步：将构建产物打包成 html.zip
+      - name: 压缩构建目录为 html.zip
+        run: zip -r html.zip html
+
+      # # 第七步：将源码打包成 source.zip（排除 .git、node_modules 和 html）
+      # - name: 压缩源码为 source.zip
+      #   run: zip -r source.zip . -x '*.git*' 'node_modules/*' 'html/*'
+
+      # # 第八步：将源码打包成 source.tar（同样排除不必要内容）
+      # - name: 压缩源码为 source.tar
+      #   run: tar --exclude='./node_modules' --exclude='./.git' --exclude='./html' -cvf source.tar .
+
+      # 第九步：部署到 GitHub Pages
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./html  # 指定构建输出目录
+
+      # 第十步：创建 GitHub Release 并上传压缩包
+      - name: 发布 Release 并上传构建包
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: release-${{ github.run_number }}  # 每次构建使用唯一的 tag
+          name: Release ${{ github.run_number }}      # Release 名称
+          files: |
+            html.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 自动生成的 token 授权
