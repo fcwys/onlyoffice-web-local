@@ -1,3 +1,5 @@
+
+
 # office-web-local
 
 基于only-office的纯本地项目，支持本地`打开、编辑`office文档，修改自https://github.com/sweetwisdom/onlyoffice-web-local
@@ -70,6 +72,7 @@ pnpm dev
 ### Type-Check, Compile and Minify for Production
 
 ```sh
+pnpm type-check
 pnpm build
 ```
 
@@ -96,4 +99,3 @@ docker run -dp 8080:80 --name local-office vue-local-office
 [Qihoo360/se-office: se-office扩展，提供基于开放标准的全功能办公生产力套件，基于浏览器预览和编辑office。](https://github.com/Qihoo360/se-office)
 
 [cryptpad/onlyoffice-x2t-wasm: CryptPad WebAssembly file conversion tool](https://github.com/cryptpad/onlyoffice-x2t-wasm)
-
